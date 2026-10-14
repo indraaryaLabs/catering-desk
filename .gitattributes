@@ -1,0 +1,21 @@
+# Normalisasi akhir baris agar diff antar platform tidak penuh noise.
+# Saat checkout di Windows memakai CRLF, tapi isi repo disimpan sebagai LF.
+* text=auto eol=lf
+
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+
+# Berkas biner tidak boleh disentuh newline.
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
+
+# Lockfile dan hasil build tidak boleh diubah baris akhir.
+package-lock.json -diff
+dist/** -diff linguist-generated=true
