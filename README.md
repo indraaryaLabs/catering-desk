@@ -63,39 +63,39 @@ di Pinjam adalah **ide dan alur kerja**, bukan tampilan, merek, atau kode.
 
 ```
 src/
-├─ types.ts            Skema domain v2 (satu-satunya sumber kebenaran bentuk data)
-├─ App.tsx             Perakitan: router, palet perintah, pintasan, dialog global
+├─ types.ts Skema domain v2 (satu-satunya sumber kebenaran bentuk data)
+├─ App.tsx Perakitan: router, palet perintah, pintasan, dialog global
 ├─ state/
-│  ├─ reducer.ts       Reducer murni beserta riwayat undo/redo
-│  └─ toko.tsx         Context React; evaluasi aturan otomasi secara sinkron
+│ ├─ reducer.ts Reducer murni beserta riwayat undo/redo
+│ └─ toko.tsx Context React; evaluasi aturan otomasi secara sinkron
 ├─ lib/
-│  ├─ pesanan.ts       Matematika murni: total, HPP, margin, produksi, belanja
-│  ├─ analitik.ts      Metrik, tren, corong status, umur piutang
-│  ├─ pelanggan.ts     Profil pelanggan turunan dari riwayat pesanan
-│  ├─ otomasi.ts       Mesin aturan deklaratif dengan pencegahan loop
-│  ├─ pesan.ts         Draf WhatsApp (hanya draf, tidak pernah dikirim)
-│  ├─ validasi.ts      Validasi form dan berkas impor yang tidak dipercaya
-│  ├─ format.ts        Rupiah dan angka gaya Indonesia
-│  ├─ tanggal.ts       Tanggal lokal, label relatif, dan tenggat
-│  ├─ filter.ts        Pencarian, filter, dan pengurutan
-│  ├─ csv.ts           Ekspor CSV dengan proteksi injeksi formula
-│  ├─ seed.ts          Data contoh yang selalu mengikuti tanggal hari ini
-│  ├─ storage.ts       Pembacaan dan penulisan localStorage
-│  └─ kode.ts          Penomoran pesanan otomatis
-├─ components/         Atom antarmuka, dialog, grafik SVG, dan form
-├─ pages/              Delapan halaman
-└─ styles/global.css   Sistem desain, mode gelap, dan gaya cetak
+│ ├─ pesanan.ts Matematika murni: total, HPP, margin, produksi, belanja
+│ ├─ analitik.ts Metrik, tren, corong status, umur piutang
+│ ├─ pelanggan.ts Profil pelanggan turunan dari riwayat pesanan
+│ ├─ otomasi.ts Mesin aturan deklaratif dengan pencegahan loop
+│ ├─ pesan.ts Draf WhatsApp (hanya draf, tidak pernah dikirim)
+│ ├─ validasi.ts Validasi form dan berkas impor yang tidak dipercaya
+│ ├─ format.ts Rupiah dan angka gaya Indonesia
+│ ├─ tanggal.ts Tanggal lokal, label relatif, dan tenggat
+│ ├─ filter.ts Pencarian, filter, dan pengurutan
+│ ├─ csv.ts Ekspor CSV dengan proteksi injeksi formula
+│ ├─ seed.ts Data contoh yang selalu mengikuti tanggal hari ini
+│ ├─ storage.ts Pembacaan dan penulisan localStorage
+│ └─ kode.ts Penomoran pesanan otomatis
+├─ components/ Atom antarmuka, dialog, grafik SVG, dan form
+├─ pages/ Delapan halaman
+└─ styles/global.css Sistem desain, mode gelap, dan gaya cetak
 ```
 
 Prinsip yang dipegang:
 
 1. **Logika murni terpisah dari tampilan.** Semua perhitungan ada di `lib/`
-   dan dapat diuji tanpa membuka peramban.
+ dan dapat diuji tanpa membuka peramban.
 2. **Satu sumber kebenaran untuk bentuk data.** `types.ts` mendefinisikan
-   skema; validasi impor memeriksa terhadap skema itu.
+ skema; validasi impor memeriksa terhadap skema itu.
 3. **Tidak ada state tersembunyi.** Satu reducer, satu konteks, satu riwayat.
 4. **Otomasi tidak melakukan hal yang tidak diminta.** Setiap aturan memakai
-   pemicu dan kondisi yang terlihat, dan setiap eksekusi dicatat.
+ pemicu dan kondisi yang terlihat, dan setiap eksekusi dicatat.
 
 ---
 
@@ -108,9 +108,9 @@ status. Field `pengantar` sengaja dipisah dari pelanggan karena sering berubah
 antar order, bahkan untuk pelanggan yang sama.
 
 ```
-inquiry → dikonfirmasi → persiapan → siap → selesai
-   ↓           ↓            ↓          ↓
-            (dibatalkan, dapat diaktifkan kembali)
+inquiry -> dikonfirmasi -> persiapan -> siap -> selesai
+ ↓ ↓ ↓ ↓
+ (dibatalkan, dapat diaktifkan kembali)
 ```
 
 Transisi lompat tahap **ditolak**. Pembatalan diizinkan dari tahap aktif.
@@ -212,17 +212,17 @@ dua aturan bisa saling memicu tanpa henti.
 
 ```bash
 npm install
-npm run dev       # pengembangan
-npm run build     # produksi ke dist/
-npm run preview   # tinjau hasil build
+npm run dev # pengembangan
+npm run build # produksi ke dist/
+npm run preview # tinjau hasil build
 ```
 
 Perintah pemeriksaan:
 
 ```bash
-npm run typecheck   # tsc --noEmit
-npm run lint        # eslint
-npm run test        # vitest run
+npm run typecheck # tsc --noEmit
+npm run lint # eslint
+npm run test # vitest run
 ```
 
 Hasil build memakai `base: './'`, sehingga folder `dist/` dapat langsung dibuka
@@ -233,13 +233,13 @@ dari sistem berkas mana pun tanpa server.
 ## Batasan yang perlu diketahui
 
 - Data **tidak** tersinkron antar perangkat. Backup dilakukan manual lewat
-  ekspor JSON.
+ ekspor JSON.
 - Satu peramban untuk satu pengguna. Tidak ada multi-user atau hak akses.
 - Integrasi WhatsApp **tidak** ada. Aplikasi hanya menyiapkan draf untuk Anda
-  kirim sendiri.
+ kirim sendiri.
 - Tidak ada notifikasi dorong. Pengingat bergantung pada daftar tugas.
 - Data contoh dibuat mengikuti tanggal hari ini, sehingga demo selalu terlihat
-  hidup. Gunakan **Reset ke data contoh** di sidebar untuk memulihkannya.
+ hidup. Gunakan **Reset ke data contoh** di sidebar untuk memulihkannya.
 
 Batasan ini disengaja agar aplikasi tetap gratis, privat, dan bisa dibuka
 tanpa akun.
