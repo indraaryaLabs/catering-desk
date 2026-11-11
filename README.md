@@ -109,7 +109,6 @@ antar order, bahkan untuk pelanggan yang sama.
 
 ```
 inquiry -> dikonfirmasi -> persiapan -> siap -> selesai
- ↓ ↓ ↓ ↓
  (dibatalkan, dapat diaktifkan kembali)
 ```
 
